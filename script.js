@@ -26,16 +26,32 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Arama terimini metin içinde vurgulayan yardımcı fonksiyon
+    // Türkçe/Arapça için tam kelime eşleşmesini kontrol eden yardımcı fonksiyon
+    function containsWholeWord(text, word) {
+        // Kelimeleri unicode harf/sayı dışındaki karakterlere göre böler
+        if (!word) return false;
+        // Küçük-büyük harf uyumlu karşılaştırma için locale kullanıyoruz
+        const normalizedWord = word.toLocaleLowerCase('tr-TR');
+        // Metni kelimelere böl (unicode harf ve sayı olmayan yerde böl)
+        return text
+            .split(/[\s.,;:!?()\[\]{}"«»'’،؟\-–—_]+/)
+            .some(w => w.toLocaleLowerCase('tr-TR') === normalizedWord);
+    }
+
+    // Arama terimini metin içinde vurgulayan yardımcı fonksiyon (unicode uyumlu)
     function highlightText(text, searchTerm) {
         if (!searchTerm) {
             return text;
         }
-        // Regex'in bozulmaması için arama terimindeki özel karakterleri escape'liyoruz.
-        const escapedTerm = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-        // Sadece tam kelime eşleşmelerini vurgula
-        const regex = new RegExp(`\\b${escapedTerm}\\b`, 'gi');
-        return text.replace(regex, (match) => `<mark>${match}</mark>`);
+        // Küçük-büyük harf uyumu için locale kullanalım
+        const normalizedTerm = searchTerm.toLocaleLowerCase('tr-TR');
+        // Metni kelimelere böl, eşleşen kelimeyi <mark> ile sar
+        return text.replace(/[\p{L}\p{N}_’'-]+/gu, (word) => {
+            if (word.toLocaleLowerCase('tr-TR') === normalizedTerm) {
+                return `<mark>${word}</mark>`;
+            }
+            return word;
+        });
     }
 
     // Sonuçları ekrana çizen fonksiyon
@@ -103,13 +119,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!searchTerm) {
             filteredSentences = [];
         } else {
-            // Arama terimini regex'e uygun şekilde güvenli yap
-            const escapedTerm = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-            const wordRegex = new RegExp(`\\b${escapedTerm}\\b`, 'i'); // sadece tam kelime eşleşmesi
-
             filteredSentences = allSentences.filter(sentence =>
-                wordRegex.test(sentence.turkce) ||
-                wordRegex.test(sentence.arapca)
+                containsWholeWord(sentence.turkce, searchTerm) ||
+                containsWholeWord(sentence.arapca, searchTerm)
             );
         }
 
