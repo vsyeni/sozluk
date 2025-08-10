@@ -5,6 +5,32 @@
     --text-color: #22223b;
     --card-background: #ffffff;
     --border-color: #c9ada7;
+    --hover-background: #f8f9fa;
+    --copied-bg: #d4edda;
+    --copied-text: #155724;
+    --mark-bg: #fff3cd;
+    --mark-text: #664d03;
+    --error-bg: #f2dede;
+    --error-text: #d9534f;
+    --error-border: #ebccd1;
+}
+
+/* Dark theme variables */
+body[data-theme='dark'] {
+    --primary-color: #a9b2d8;
+    --secondary-color: #9a8c98;
+    --background-color: #22223b;
+    --text-color: #f2e9e4;
+    --card-background: #2d2d4a;
+    --border-color: #4a4e69;
+    --hover-background: #3b3e54;
+    --copied-bg: #2a4b32;
+    --copied-text: #a3e9b3;
+    --mark-bg: #664d03;
+    --mark-text: #fff3cd;
+    --error-bg: #4d3232;
+    --error-text: #f2a1a1;
+    --error-border: #8b4545;
 }
 
 body {
@@ -26,10 +52,17 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
 h1 {
     text-align: center;
     color: var(--primary-color);
-    margin-bottom: 20px;
+    margin: 0;
 }
 
 .search-container {
@@ -42,6 +75,8 @@ h1 {
     padding: 10px 15px;
     border: 1px solid var(--border-color);
     border-radius: 4px 0 0 4px;
+    background-color: var(--card-background);
+    color: var(--text-color);
     font-size: 16px;
 }
 
@@ -72,13 +107,22 @@ h1 {
 
 .results-placeholder {
     text-align: center;
-    color: #6c757d;
+    color: var(--secondary-color);
     padding: 20px 0;
 }
 
+.results-title {
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+    text-align: center;
+}
+
 mark {
-    background-color: #fff3cd;
-    color: #664d03;
+    background-color: var(--mark-bg);
+    color: var(--mark-text);
     border-radius: 3px;
     padding: 1px 3px;
 }
@@ -95,22 +139,39 @@ mark {
 .sentence-card .turkce {
     font-size: 1rem;
     margin-bottom: 10px;
+    padding: 5px;
+    border-radius: 3px;
     color: var(--text-color);
+    cursor: pointer;
+    transition: background-color 0.2s;
 }
 
 .sentence-card .arapca {
     font-family: 'Noto Naskh Arabic', serif;
     font-size: 1.2rem;
+    padding: 5px;
+    border-radius: 3px;
     direction: rtl;
     text-align: right;
     color: var(--primary-color);
     margin-top: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.sentence-card .turkce:hover, .sentence-card .arapca:hover {
+    background-color: var(--hover-background);
+}
+
+.copied-feedback {
+    background-color: var(--copied-bg) !important;
+    color: var(--copied-text) !important;
 }
 
 .error {
-    color: #d9534f;
-    background-color: #f2dede;
-    border: 1px solid #ebccd1;
+    color: var(--error-text);
+    background-color: var(--error-bg);
+    border: 1px solid var(--error-border);
     padding: 15px;
     border-radius: 4px;
     text-align: center;
