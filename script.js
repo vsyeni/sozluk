@@ -33,7 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         // Regex'in bozulmaması için arama terimindeki özel karakterleri escape'liyoruz.
         const escapedTerm = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-        const regex = new RegExp(escapedTerm, 'gi'); // 'g' for global, 'i' for case-insensitive
+        // Sadece tam kelime eşleşmelerini vurgula
+        const regex = new RegExp(`\\b${escapedTerm}\\b`, 'gi');
         return text.replace(regex, (match) => `<mark>${match}</mark>`);
     }
 
@@ -94,17 +95,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Arama işlemini yöneten fonksiyon
+    // Arama işlemini yöneten fonksiyon (GÜNCELLENDİ)
     function handleSearch(event) {
         event.preventDefault();
-        const searchTerm = searchInput.value.trim().toLowerCase();
+        const searchTerm = searchInput.value.trim();
 
         if (!searchTerm) {
             filteredSentences = [];
         } else {
+            // Arama terimini regex'e uygun şekilde güvenli yap
+            const escapedTerm = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            const wordRegex = new RegExp(`\\b${escapedTerm}\\b`, 'i'); // sadece tam kelime eşleşmesi
+
             filteredSentences = allSentences.filter(sentence =>
-                sentence.turkce.toLowerCase().includes(searchTerm) ||
-                sentence.arapca.toLowerCase().includes(searchTerm)
+                wordRegex.test(sentence.turkce) ||
+                wordRegex.test(sentence.arapca)
             );
         }
 
@@ -126,4 +131,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Sayfa yüklendiğinde verileri çek
     loadSentences();
+
 });
