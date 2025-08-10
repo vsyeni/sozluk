@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             allSentences = await response.json();
-            displayInitialView(); // Veriler yüklendiğinde rastgele örnekleri göster
+            initializeFromUrl(); // Sayfa yüklendiğinde URL'yi kontrol et ve içeriği ayarla
         } catch (error) {
             console.error('Veri yüklenirken bir hata oluştu:', error);
             resultsDiv.innerHTML = `<p class="error">Veriler yüklenemedi. Lütfen internet bağlantınızı kontrol edin veya daha sonra tekrar deneyin.</p>`;
@@ -53,19 +53,14 @@ document.addEventListener('DOMContentLoaded', () => {
         title.classList.add('results-title');
         resultsDiv.prepend(title);
     }
-    function copyToClipboard(element, text) {
-        navigator.clipboard.writeText(text).then(() => {
-            const originalTitle = element.title;
-            element.classList.add('copied-feedback');
-            element.title = 'Kopyalandı!';
 
-            setTimeout(() => {
-                element.classList.remove('copied-feedback');
-                element.title = originalTitle;
-            }, 1200); // 1.2 saniye sonra eski haline dön
-        }).catch(err => {
-            console.error('Metin kopyalanamadı: ', err);
-        });
+    // Unicode destekli, tam kelime arama için Regex oluşturan yardımcı fonksiyon
+    function createSearchRegex(term, flags = 'iu') {
+        // Regex'in bozulmaması için arama terimindeki özel karakterleri escape'liyoruz.
+        const escapedTerm = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        // (?<=^|\P{L}) -> Kelimenin başında ya harf olmayan bir karakter ya da satır başı olmalı.
+        // (?=\P{L}|$) -> Kelimenin sonunda ya harf olmayan bir karakter ya da satır sonu olmalı.
+        return new RegExp(`(?<=^|\\P{L})${escapedTerm}(?=\\P{L}|$)`, flags);
     }
 
     // Arama terimini metin içinde vurgulayan yardımcı fonksiyon
@@ -73,9 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!searchTerm) {
             return text;
         }
-        // Regex'in bozulmaması için arama terimindeki özel karakterleri escape'liyoruz.
-        const escapedTerm = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-        const regex = new RegExp(escapedTerm, 'gi'); // 'g' for global, 'i' for case-insensitive
+        const regex = createSearchRegex(searchTerm, 'giu'); // 'g' flag for global replace
         return text.replace(regex, (match) => `<mark>${match}</mark>`);
     }
 
@@ -101,14 +94,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const turkceP = document.createElement('p');
             turkceP.className = 'turkce';
             turkceP.innerHTML = highlightText(sentence.turkce, searchTerm);
-            turkceP.title = 'Kopyalamak için tıkla';
-            turkceP.addEventListener('click', () => copyToClipboard(turkceP, sentence.turkce));
 
             const arapcaP = document.createElement('p');
             arapcaP.className = 'arapca';
             arapcaP.innerHTML = highlightText(sentence.arapca, searchTerm);
-            arapcaP.title = 'للنسخ انقر'; // "Click to copy" in Arabic
-            arapcaP.addEventListener('click', () => copyToClipboard(arapcaP, sentence.arapca));
 
             sentenceCard.appendChild(turkceP);
             sentenceCard.appendChild(arapcaP);
@@ -133,6 +122,8 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.addEventListener('click', () => {
                 renderResults(sentences, i, searchTerm);
                 renderPagination(sentences, i, searchTerm); // Butonların durumunu güncelle
+                // Sayfa değiştirildiğinde sonuçların başına yumuşak bir şekilde kaydır
+                document.querySelector('.container').scrollIntoView({ behavior: 'smooth' });
             });
             paginationContainer.appendChild(btn);
         }
@@ -147,15 +138,42 @@ document.addEventListener('DOMContentLoaded', () => {
             filteredSentences = [];
             displayInitialView();
             paginationContainer.replaceChildren();
+            updateUrl(''); // URL'yi temizle
             return;
         }
+
+        // Her zaman tam kelime araması yap
+        const regex = createSearchRegex(term, 'iu');
         filteredSentences = allSentences.filter(sentence =>
-            sentence.turkce.toLowerCase().includes(term) ||
-            sentence.arapca.toLowerCase().includes(term)
+            regex.test(sentence.turkce) || regex.test(sentence.arapca)
         );
 
         renderResults(filteredSentences, 1, term);
         renderPagination(filteredSentences, 1, term);
+        updateUrl(term); // Arama yapıldıktan sonra URL'yi güncelle
+    }
+
+    // URL'yi ve tarayıcı geçmişini güncelleyen fonksiyon
+    function updateUrl(searchTerm) {
+        const url = new URL(window.location);
+        if (searchTerm) {
+            url.searchParams.set('q', searchTerm);
+        } else {
+            url.searchParams.delete('q');
+        }
+        // Sadece URL gerçekten değiştiyse history'e yeni bir state ekle
+        if (url.href !== window.location.href) {
+            history.pushState({ searchTerm }, '', url);
+        }
+    }
+
+    // Sayfa yüklendiğinde URL'yi kontrol edip arama yapan fonksiyon
+    function initializeFromUrl() {
+        const params = new URLSearchParams(window.location.search);
+        const searchTermFromUrl = params.get('q');
+
+        searchInput.value = searchTermFromUrl || '';
+        performSearch(searchInput.value);
     }
 
     // Arama fonksiyonunun "debounced" versiyonunu oluşturalım
@@ -169,6 +187,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Kullanıcı yazdıkça gecikmeli arama yap
     searchInput.addEventListener('input', debouncedSearch);
+
+    // Tarayıcının geri/ileri butonlarına basıldığında durumu yeniden yükle
+    window.addEventListener('popstate', (event) => {
+        if (event.state) {
+            const { searchTerm } = event.state;
+            searchInput.value = searchTerm || '';
+            performSearch(searchInput.value);
+        } else {
+            // Başlangıç durumuna (arama yok) geri dönüldüğünde
+            initializeFromUrl();
+        }
+    });
 
     // Sayfa yüklendiğinde verileri çek
     loadSentences();
