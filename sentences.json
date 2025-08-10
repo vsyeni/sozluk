@@ -1,157 +1,196 @@
 [
   {
+    "id": 1,
     "turkce": "Korkunç olan cehalet değil onu koruyanlardır",
     "arapca": "ليس الجهل هو ما يخيف بل اؤلئك ألذين يحرسونه"
   },
   {
+    "id": 2,
     "turkce": "Sadece unutmak istediklerimiz hafızada kalır",
     "arapca": "لا يبقى في الذاكرة سوى ما نريد نسيانه"
   },
   {
+    "id": 3,
     "turkce": "Depresyon bir zayıflık işareti değil aksine hasta bir dünyada aşırı hassasiyetin sunucudur",
     "arapca": "الاكتئاب ليس علامة ضعف  بل نتيجة لحساسية مفرطة في عالم مريض"
   },
   {
+    "id": 4,
     "turkce": "Arap ülkelerinde en çok satan kitaplar yemek kitapları ve rüya tabirleri kitaplarıdır, bu da bizim yiyip uyuyan toplumlar olduğumuzun bir kanıtıdır.",
     "arapca": "أكثر الكتب مبيعاً في الدول العربية هي كتب الطبخ وتفسير الأحلام، وهذا دليل على أننا شعوب نأكل وننام"
   },
   {
+    "id": 5,
     "turkce": "İnsanlar yaşamıyor, sadece bir şey bekliyorlar; iş, aşk... Ve bekleyişler arasında hayat kaybolup gidiyor",
     "arapca": "الناس لا يعيشون بل ينتظرون شيئاً ما؛ عملاً، حباً. وما بين الانتظارات تضيع الحياة"
   },
   {
+    "id": 6,
     "turkce": "En aşağılık insanlar vatanları aç kaldığında refaha ulaşanlardır",
     "arapca": "احقر الناس من ازدهرت احوالهم يوم جاعت اوطانهم"
   },
   {
+    "id": 7,
     "turkce": "Özgür insanlar haklı olanın köleler ise güçlü olanların peşinden gider",
     "arapca": "الأحرار يتبعون من معه الحق و العبيد يتبعون من معه القوة "
   },
   {
+    "id": 8,
     "turkce": "Zeki ve şanslı olanlar başarısız olabilir ama azimle çalışan asla başarısız olmaz",
     "arapca": "قد يفشل الذكي و المحظوظ لكن المثابر لا يفشل ابدا"
   },
   {
+    "id": 9,
     "turkce": "Hakikati söylemek herhangi bir kişinin yapabileceği en büyük devrimci eylemdir",
     "arapca": "قول الحقيقة هو اكبر فعل ثوري يمكن أن يقوم به المرء"
   },
   {
+    "id": 10,
     "turkce": "Bir şeyden korktuğunda, onun hakkında olabildiğince çok şey öğren; çünkü bilgi korkuyu yener.",
     "arapca": "عندما تخاف من شيئ ما تعلم عنه بقدر ما تستطيع فالمعرفة تقهر الخوف"
   },
   {
+    "id": 11,
     "turkce": "Bekçi köpekleri sahibine havlamaz hırsızlık yapsa bile!",
     "arapca": "كلاب الحراسة لا تنبح على سيدها حتى لو سرق"
   },
   {
+    "id": 12,
     "turkce": "Şeytanlar vatan uğruna değil üzerine kavga edenlerdir",
     "arapca": "الشياطين هم هؤلاء الذين يتصارعون على الوطن و ليس من أجله"
   },
   {
+    "id": 13,
     "turkce": "Onurumla Kaybetmeyi hileyle kazanmaya yeğlerim",
     "arapca": "افضل ان افشل بشرف على أن انجح عن طريق الغش "
   },
   {
+    "id": 14,
     "turkce": "İhlâs gizli bir davranıştır; onu gözleyen sadece vicdandır",
     "arapca": "الإخلاصُ فعلٌ خفيٌّ، لا رقيبَ عليه سوى الضمير"
   },
   {
+    "id": 15,
     "turkce": "Her şeyde ölçülü ol ama öz saygın hariç, orada taşkın ol",
     "arapca": "اعتدل في كل شيء إلا في عزّة نفسك ، إطغى"
   },
   {
+    "id": 16,
     "turkce": "İnsan iki durumda değişir: Bilinci arttığında ya da kalbi kırıldığında.",
     "arapca": "يتغير الإنسان في حالتين: إذا زاد وعيه، أو انكسر قلبه."
   },
   {
+    "id": 17,
     "turkce": "Kederini tek başına aşmaya alışan birisi için kimsenin ne varlığı ne yokluğu etkiler",
     "arapca": "من اعتاد على تجاوز حزنه بمفرده ، لن يؤثر فيه بقاء أحد أو غيابه"
   },
   {
+    "id": 18,
     "turkce": "Allah sana bir yüz vermiş ama sen başka bir tane yaratıyorsun",
     "arapca": "أعطاك الله وجهًا، وأنت تصنع لنفسك آخر"
   },
   {
+    "id": 19,
     "turkce": "Sustuğunda aptal bile akıllı görünür",
     "arapca": "حتى الأحمقُ يبدو ذكيًّا إذا لزمَ الصمت."
   },
   {
+    "id": 20,
     "turkce": "Kendine iyi davran çünkü sen her şeye rağmen mücadele ediyorsun",
     "arapca": "كُن لطيفًا مع نفسك، فأنت تُحاول، رغم كلِّ شيء."
   },
   {
+    "id": 21,
     "turkce": "Kurtlarla yüzleşemiyorsan ormana girme",
     "arapca": "إذا كنت لا تستطيع مواجهة الذئاب فلا تدخل الغابة"
   },
   {
+    "id": 22,
     "turkce": "İnsanın kendi hakkını temenni etmesi ne üzücü",
     "arapca": "مؤسف أن يتمنّى الإنسانُ حقَّه."
   },
   {
+    "id": 23,
     "turkce": "Toplumun değer verdiği kişilere bak, o toplumda hâkim olan medeniyet yönelimini ve onun akıbetini anlarsın.",
     "arapca": "انظر إلى الأشخاص الذين يُقدِّرهم المجتمع، تعرف الاتجاه الحضاري السائد في ذلك المجتمع ومصيره."
   },
   {
+    "id": 24,
     "turkce": "Eğitim, dünyayı değiştirmek için kullanabileceğin en güçlü silahtır.",
     "arapca": "التعليم هو أقوى سلاح يمكنك استخدامه لتغيير العالم."
   },
   {
+    "id": 25,
     "turkce": "Kadınların eğitim görmesini reddederler, ama kadınları hastalanınca kadın doktor ararlar.",
     "arapca": "يرفضون تعليم النساء، وحين تمرض نساؤهم يبحثون عن طبيبة."
   },
   {
+    "id": 26,
     "turkce": "İnsanlar gerçeği ve sadeliği sevmez, efsaneleri ve aldatmacaları severler.",
     "arapca": "الناس لا يحبون الحقيقي والبسيط، بل يحبون الأساطير والخدع."
   },
   {
+    "id": 27,
     "turkce": "Ne fakirlik güçlü ruhları aşağılayabilir, ne de servet aşağılık ruhları yüceltebilir.",
     "arapca": "لا الفقرُ يستطيعُ إذلالَ النفوسِ القويةِ، ولا الثروةُ تستطيعُ أن ترفعَ النفوسَ الدنيئةَ."
   },
   {
+    "id": 28,
     "turkce": "Sessizlik, size başkalarının zihinlerinde gezinme zevkini verir",
     "arapca": "الصمتُ يمنحُك متعةَ التنزّهِ في عقولِ الآخرينَ."
   },
   {
+    "id": 29,
     "turkce": "Bekârken gördüğün tek şey mutlu evli çiftlerdir,evlendiğinde ise gördüğün tek şey mutlu bekârlardır.",
     "arapca": "عندما تكونُ عازبًا، فكلُّ ما ستراه هو الأزواجُ السعداء،وإذا تزوّجت، فإنّ كلَّ ما ستراه هو العُزّابُ السعداء."
   },
   {
+    "id": 30,
     "turkce": "İnsan aklına karşı işlenen en büyük günah, herhangi bir şeye  delilsiz inanmaktır.",
     "arapca": "أعظم خطيئة في حقّ العقل البشري هي تصديق الأشياء  بدون دليل."
   },
   {
+    "id": 31,
     "turkce": "Akıl hastası, etrafında olup biteni anlayana denir",
     "arapca": "المريض النفسي هو الإنسان الذي فهم ما يجري من حوله."
   },
   {
+    "id": 32,
     "turkce": "Tevazuda aşırıya kaçma çünkü bu insanların sınırları görme yetisini kaybetmesine neden olur",
     "arapca": "لا تُسرف في التواضع، فإنّه يُفقد الناس القدرة على رؤية الحدود."
   },
   {
+    "id": 33,
     "turkce": "Matematik bana her bilinmeyenin bir kıymeti olduğunu öğretti bu yüzden tanımadığın hiç kimseyi küçümseme",
     "arapca": "علّمتني الرياضيات أن لكل مجهولٍ قيمة، فلا تحتقر أحدًا لا تعرفه."
   },
   {
+    "id": 34,
     "turkce": "Cahillerin bu kadar nüfuza sahip olması gerçekten korkutucu.",
     "arapca": "إنه لأمرٌ مخيف أن يكون للجهلة كل هذا النفوذ."
   },
   {
+    "id": 35,
     "turkce": "Etrafını cücelerle çevrelemen seni dev yapmaz",
     "arapca": "إحاطتك لنفسك بالأقزام لن يجعلك عملاقًا."
   },
   {
+    "id": 36,
     "turkce": "Plan yapan bir aptal, plansız bir dahiyi alt edebilir.",
     "arapca": "أحمق يخطط يمكنه أن يتغلب على عبقري لا يملك خطة."
   },
   {
+    "id": 37,
     "turkce": "Düşünmek zordur; bu yüzden insanların yaptığı en kolay şey yargılamaktır!",
     "arapca": "التفكير صعب، لذلك أسهل شيء يفعله الناس هو إطلاق الأحكام!"
   },
   {
+    "id": 38,
     "turkce": "Üç şey hayatın zorluklarına katlanmayı kolaylaştırır: umut, uyku, gülmek",
     "arapca": "ثلاثة أشياء تساعد على تحمّل مشقات الحياة: الأمل، والنوم، والضحك."
   },
   {
+    "id": 39,
     "turkce": "Aptallık, aynı şeyi defalarca yapıp farklı bir sonuç beklemektir.",
     "arapca": "الغباء هو أن تفعل الشيء ذاته مرة بعد أخرى وتتوقع نتيجة مختلفة."
   }
