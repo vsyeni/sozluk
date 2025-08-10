@@ -13,7 +13,15 @@
 <body>
 
     <main class="container">
-        <h1>TARAR</h1>
+        <div class="title-container">
+            <h1>TARAR</h1>
+            <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="theme-toggle">
+                    <input type="checkbox" id="theme-toggle" aria-label="Karanlık modu aç/kapat">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
         <form class="search-container" id="searchForm" role="search">
             <input type="text" id="searchInput" placeholder="Türkçe veya Arapça arama yapın..." aria-label="Arama kutusu">
             <button type="submit" id="searchButton" aria-label="Arama yap">Ara</button>
